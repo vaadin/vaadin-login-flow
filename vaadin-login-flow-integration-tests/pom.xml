@@ -180,7 +180,7 @@
         </plugins>
     </build>
     <profiles>
-        <!--This profile is only present for quick testing againt the element from GitHub-->
+        <!--This profile is only present for quick testing against the element from GitHub-->
         <!--Do not use with production mode-->
         <profile>
             <id>bower</id>
