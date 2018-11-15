@@ -24,7 +24,7 @@ Add Login to your project
 
 ### Using Vaadin Login
 
-[<img src="https://raw.githubusercontent.com/vaadin/vaadin-login/master/screenshot.gif" width="700" alt="Screenshot of vaadin-login">](https://vaadin.com/components/vaadin-login)
+[<img src="https://raw.githubusercontent.com/vaadin/vaadin-login/master/screenshot.png" width="700" alt="Screenshot of vaadin-login">](https://vaadin.com/components/vaadin-login)
 
 #### Basic use
 ```java
