@@ -40,11 +40,20 @@ public class Login extends Component {
      * Initializes a new Login.
      */
     public Login() {
-        setI18n(LoginI18n.createDefault());
+        this(LoginI18n.createDefault());
     }
 
     /**
-     * Sets the internationalized messages to be used by this crud instance.
+     * Initializes a new Login.
+     *
+     * @param i18n internationalized messages to be used by this instance.
+     */
+    public Login(LoginI18n i18n) {
+        setI18n(i18n);
+    }
+
+    /**
+     * Sets the internationalized messages to be used by this instance.
      *
      * @param i18n the internationalized messages
      * @see LoginI18n#createDefault()
@@ -56,8 +65,10 @@ public class Login extends Component {
     /**
      * Adds `forgotPassword` event listener
      */
-    public Registration addForgotPasswordListener(ComponentEventListener<ForgotPasswordEvent> listener) {
-        return ComponentUtil.addListener(this, ForgotPasswordEvent.class, listener);
+    public Registration addForgotPasswordListener(
+        ComponentEventListener<ForgotPasswordEvent> listener) {
+        return ComponentUtil
+            .addListener(this, ForgotPasswordEvent.class, listener);
     }
 
     /**

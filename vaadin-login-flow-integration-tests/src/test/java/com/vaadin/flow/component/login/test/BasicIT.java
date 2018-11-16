@@ -35,6 +35,31 @@ public class BasicIT extends AbstractParallelTest {
     }
 
     @Test
+    public void testI18n() {
+        LoginElement login = $(LoginElement.class).waitForFirst();
+    //TODO
+        Assert.assertEquals("Nome do aplicativo", login.getTitle());
+        Assert.assertEquals("Descrição do aplicativo", login.getMessage());
+        Assert.assertEquals("Acesse a sua conta", login.getFormTitle());
+        if (!BrowserUtil.isEdge(getDesiredCapabilities()) && !BrowserUtil
+            .isSafari(getDesiredCapabilities())) {
+            // Error message should be hidden by default, however Safari and Edge drivers return the innerHTML content
+            // Usuário/senha inválidos
+            Assert.assertEquals("", login.getErrorMessageTitle());
+            //Confira seu usuário e senha e tente novamente.
+            Assert.assertEquals("", login.getErrorMessage());
+        }
+        Assert.assertEquals("Usuário", login.getUsernameField().getLabel());
+        Assert.assertEquals("Senha", login.getPasswordField().getLabel());
+        Assert.assertEquals("Entrar", login.getSubmitButton().getText());
+        Assert.assertEquals("Esqueci minha senha",
+            login.getForgotPasswordButton().getText());
+        Assert.assertEquals(
+            "Caso necessite apresentar alguma informação extra para o usuário (como credenciais padrão), este é o lugar.",
+            login.getAdditionalInformation());
+    }
+
+    @Test
     public void forgotPassword() {
         LoginElement login = $(LoginElement.class).waitForFirst();
         login.forgotPassword();
