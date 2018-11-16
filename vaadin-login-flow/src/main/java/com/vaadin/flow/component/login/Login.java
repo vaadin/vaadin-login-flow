@@ -8,10 +8,10 @@ package com.vaadin.flow.component.login;
  * %%
  * This program is available under Commercial Vaadin Add-On License 3.0
  * (CVALv3).
- * 
+ *
  * See the file license.html distributed with this software for more
  * information about licensing.
- * 
+ *
  * You should have received a copy of the CVALv3 along with this program.
  * If not, see <http://vaadin.com/license/cval-3>.
  * #L%
@@ -24,17 +24,34 @@ import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.DomEvent;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.internal.JsonSerializer;
 import com.vaadin.flow.shared.Registration;
 
 /**
  * Server-side component for the {@code <vaadin-login>} component.
  *
  * @author Vaadin Ltd
- *
  */
 @Tag("vaadin-login")
 @HtmlImport("frontend://bower_components/vaadin-login/src/vaadin-login.html")
 public class Login extends Component {
+
+    /**
+     * Initializes a new Login.
+     */
+    public Login() {
+        setI18n(LoginI18n.createDefault());
+    }
+
+    /**
+     * Sets the internationalized messages to be used by this crud instance.
+     *
+     * @param i18n the internationalized messages
+     * @see LoginI18n#createDefault()
+     */
+    public void setI18n(LoginI18n i18n) {
+        getElement().setPropertyJson("i18n", JsonSerializer.toJson(i18n));
+    }
 
     /**
      * Adds `forgotPassword` event listener
