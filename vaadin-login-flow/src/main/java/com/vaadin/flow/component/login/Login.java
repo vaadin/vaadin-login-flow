@@ -37,12 +37,6 @@ import com.vaadin.flow.shared.Registration;
 public class Login extends Component {
 
     /**
-     * Initializes a new Login Component.
-     */
-    public Login() {
-    }
-
-    /**
      * Adds `forgotPassword` event listener
      */
     public Registration addForgotPasswordListener(ComponentEventListener<ForgotPasswordEvent> listener) {
