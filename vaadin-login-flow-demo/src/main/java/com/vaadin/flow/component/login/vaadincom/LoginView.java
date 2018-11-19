@@ -1,5 +1,6 @@
 package com.vaadin.flow.component.login.vaadincom;
 
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.login.Login;
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.demo.DemoView;
@@ -11,6 +12,7 @@ public class LoginView extends DemoView {
     @Override
     protected void initView() {
         basicDemo();
+        internationalization();
     }
 
     private void basicDemo() {
@@ -25,10 +27,12 @@ public class LoginView extends DemoView {
     private void internationalization() {
         // begin-source-example
         // source-example-heading: Login with internationalization
-        Login component = new Login(createPortugueseI18n());
+        Login component = new Login();
+        Button updateI18nButton = new Button("Switch to Brazilian Portuguese",
+            event -> component.setI18n(createPortugueseI18n()));
         // end-source-example
 
-        addCard("Login with internationalization", component);
+        addCard("Login with internationalization", component, updateI18nButton);
     }
 
     private LoginI18n createPortugueseI18n() {
@@ -45,7 +49,8 @@ public class LoginView extends DemoView {
         i18n.getErrorMessage()
             .setMessage("Confira seu usuário e senha e tente novamente.");
         i18n.setAdditionalInformation(
-            "Caso necessite apresentar alguma informação extra para o usuário (como credenciais padrão), este é o lugar.");
+            "Caso necessite apresentar alguma informação extra para o usuário"
+                + " (como credenciais padrão), este é o lugar.");
         return i18n;
     }
 }
