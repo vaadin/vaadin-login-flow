@@ -8,10 +8,10 @@ package com.vaadin.flow.component.login;
  * %%
  * This program is available under Commercial Vaadin Add-On License 3.0
  * (CVALv3).
- *
+ * 
  * See the file license.html distributed with this software for more
  * information about licensing.
- *
+ * 
  * You should have received a copy of the CVALv3 along with this program.
  * If not, see <http://vaadin.com/license/cval-3>.
  * #L%
@@ -120,7 +120,7 @@ public class LoginI18n implements Serializable {
     /**
      * I18n properties for the header.
      */
-    public static class Header {
+    public static class Header implements Serializable {
         private String title;
         private String description;
 
@@ -156,7 +156,7 @@ public class LoginI18n implements Serializable {
     /**
      * I18n properties for the form.
      */
-    public static class Form {
+    public static class Form implements Serializable {
         private String title;
         private String username;
         private String password;
@@ -237,7 +237,7 @@ public class LoginI18n implements Serializable {
     /**
      * I18n properties for the error message.
      */
-    public static class ErrorMessage {
+    public static class ErrorMessage implements Serializable {
         private String title;
         private String message;
 

@@ -5,7 +5,7 @@ import com.vaadin.flow.component.login.Login;
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "/ptbr")
+@Route(value = "ptbr")
 public class HomePtBR extends Div {
 
     public HomePtBR() {
