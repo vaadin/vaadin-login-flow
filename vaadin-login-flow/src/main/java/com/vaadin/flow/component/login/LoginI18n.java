@@ -41,7 +41,7 @@ public class LoginI18n implements Serializable {
         try {
             final JsonFactory JSON_FACTORY = new JreJsonFactory();
             DEFAULT_I18N = JSON_FACTORY.parse(IOUtils
-                .toString(LoginI18n.class.getResource("/i18n.json"),
+                .toString(LoginI18n.class.getResource("i18n.json"),
                     Charset.defaultCharset()));
         } catch (IOException e) {
             throw new IllegalStateException(
