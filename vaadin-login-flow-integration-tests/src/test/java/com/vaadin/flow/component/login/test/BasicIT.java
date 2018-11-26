@@ -42,4 +42,16 @@ public class BasicIT extends AbstractParallelTest {
         Assert.assertEquals("Forgot password button pressed",
                 notification);
     }
+
+    @Test
+    public void disabledLogin() {
+        getDriver().get(getBaseURL() + "/disabledlogin");
+        LoginElement login = $(LoginElement.class).waitForFirst();
+        login.getUsernameField().setValue("username");
+        login.getPasswordField().setValue("password");
+        login.submit();
+
+        Assert.assertTrue("URL is not changed",
+                getDriver().getCurrentUrl().endsWith("disabledlogin"));
+    }
 }

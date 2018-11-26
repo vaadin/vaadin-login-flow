@@ -22,6 +22,8 @@ import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.DomEvent;
+import com.vaadin.flow.component.HasEnabled;
+import com.vaadin.flow.component.Synchronize;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.internal.JsonSerializer;
@@ -34,7 +36,7 @@ import com.vaadin.flow.shared.Registration;
  */
 @Tag("vaadin-login")
 @HtmlImport("frontend://bower_components/vaadin-login/src/vaadin-login.html")
-public class Login extends Component {
+public class Login extends Component implements HasEnabled {
 
     /**
      * Initializes a new Login.
@@ -50,6 +52,27 @@ public class Login extends Component {
      */
     public Login(LoginI18n i18n) {
         setI18n(i18n);
+    }
+
+    /**
+     * Enables or disables submit action or login event as well as a submit button
+     *
+     * @see #isEnabled()
+     */
+    @Override
+    public void setEnabled(boolean enabled) {
+        getElement().setProperty("disabled", !enabled);
+    }
+
+    /**
+     * Returns whether the submit action and login event are prevented or not
+     *
+     * @return the value of disabled property
+     */
+    @Override
+    @Synchronize("disabled-changed")
+    public boolean isEnabled() {
+        return !getElement().getProperty("disabled", false);
     }
 
     /**
