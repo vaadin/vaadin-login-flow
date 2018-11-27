@@ -6,6 +6,7 @@ import com.vaadin.testbench.parallel.BrowserUtil;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Keys;
 
 public class BasicIT extends AbstractParallelTest {
 
@@ -51,17 +52,30 @@ public class BasicIT extends AbstractParallelTest {
         login.getPasswordField().setValue("password");
         login.submit();
 
-        Assert.assertTrue("URL is not changed",
+        Assert.assertTrue("Form submit redirect happened, but it should not",
                 getDriver().getCurrentUrl().endsWith("disabledlogin"));
+
+        login.sendKeys(Keys.ENTER);
+        Assert.assertTrue("Form submit redirect happened, but it should not",
+                getDriver().getCurrentUrl().endsWith("disabledlogin"));
+    }
+
+    @Test
+    public void enterKeyLogin() {
+        LoginElement login = $(LoginElement.class).waitForFirst();
+        checkSuccessfulLogin(login, () -> login.sendKeys(Keys.ENTER));
     }
 
     @Test
     public void login() {
         LoginElement login = $(LoginElement.class).waitForFirst();
+        checkSuccessfulLogin(login, () -> login.submit());
+    }
 
+    private void checkSuccessfulLogin(LoginElement login, Runnable submit) {
         login.getUsernameField().setValue("username");
         login.getPasswordField().setValue("password");
-        login.submit();
+        submit.run();
         String notification = $(NotificationElement.class).waitForFirst().getText();
         Assert.assertEquals("Successful login", notification);
     }
