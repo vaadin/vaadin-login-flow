@@ -56,7 +56,7 @@ public class Login extends Component {
 
     /**
      * Sets the path where to send the form-data when a form is submitted.
-     * Once action is defined a com.vaadin.flow.component.login.Login.LoginEvent is not fired anymore.
+     * Once action is defined a {@link Login.LoginEvent} is not fired anymore.
      *
      * @see #getAction()
      */
