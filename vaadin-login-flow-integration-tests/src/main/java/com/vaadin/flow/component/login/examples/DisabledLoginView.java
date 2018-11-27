@@ -11,7 +11,7 @@ public class DisabledLoginView extends Div {
         this.setSizeFull();
         Login login = new Login();
 
-        login.getElement().setProperty("action", "loginAction");
+        login.setAction("loginAction");
         login.setEnabled(false);
 
         add(login);
