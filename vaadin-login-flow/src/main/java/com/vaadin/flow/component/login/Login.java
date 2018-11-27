@@ -26,6 +26,7 @@ import com.vaadin.flow.component.EventData;
 import com.vaadin.flow.component.HasEnabled;
 import com.vaadin.flow.component.Synchronize;
 import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.Synchronize;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.internal.JsonSerializer;
 import com.vaadin.flow.shared.Registration;
@@ -54,6 +55,27 @@ public class Login extends Component implements HasEnabled {
     public Login(LoginI18n i18n) {
         setI18n(i18n);
     }
+
+    /**
+     * Sets the path where to send the form-data when a form is submitted.
+     * Once action is defined a {@link Login.LoginEvent} is not fired anymore.
+     *
+     * @see #getAction()
+     */
+    public void setAction(String action) {
+        getElement().setProperty("action", action);
+    }
+
+     /**
+     * Returns the action defined for a login form.
+     *
+     * @return the value of action property
+     */
+    @Synchronize("action-changed")
+    public String getAction() {
+        return getElement().getProperty("action");
+    }
+
 
     /**
      * Enables or disables submit action or login event as well as a submit button
@@ -88,6 +110,7 @@ public class Login extends Component implements HasEnabled {
 
     /**
      * Adds `login` event listener
+     * Event is fired only if no action is defined
      */
     public Registration addLoginListener(ComponentEventListener<LoginEvent> listener) {
         return ComponentUtil.addListener(this, LoginEvent.class, listener);
