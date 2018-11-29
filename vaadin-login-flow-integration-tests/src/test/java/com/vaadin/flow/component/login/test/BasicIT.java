@@ -12,7 +12,7 @@ public class BasicIT extends AbstractParallelTest {
 
     @Before
     public void init() {
-        getDriver().get(getBaseURL() + "");
+        getDriver().get(getBaseURL());
     }
 
     @Test
@@ -58,6 +58,9 @@ public class BasicIT extends AbstractParallelTest {
         Assert.assertFalse("Login notification was shown",
                 $(NotificationElement.class).waitForFirst().isOpen());
 
+        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
+            skipTest("Skip for Edge due to the sendKeys usage");
+        }
         login.getPasswordField().focus();
         login.sendKeys(Keys.ENTER);
         Assert.assertFalse("Login notification was shown",
@@ -69,6 +72,9 @@ public class BasicIT extends AbstractParallelTest {
 
     @Test
     public void enterKeyLogin() {
+        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
+            skipTest("Skip for Edge due to the sendKeys usage");
+        }
         LoginElement login = $(LoginElement.class).waitForFirst();
         checkSuccessfulLogin(login, () -> {
             login.focus();
@@ -78,6 +84,9 @@ public class BasicIT extends AbstractParallelTest {
 
     @Test
     public void passwordEnterKeyLogin() {
+        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
+            skipTest("Skip for Edge due to the sendKeys usage");
+        }
         LoginElement login = $(LoginElement.class).waitForFirst();
         checkSuccessfulLogin(login, () -> {
             login.getPasswordField().focus();
@@ -87,6 +96,9 @@ public class BasicIT extends AbstractParallelTest {
 
     @Test
     public void usernameEnterKeyLogin() {
+        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
+            skipTest("Skip for Edge due to the sendKeys usage");
+        }
         LoginElement login = $(LoginElement.class).waitForFirst();
         checkSuccessfulLogin(login, () -> {
             login.getUsernameField().focus();
