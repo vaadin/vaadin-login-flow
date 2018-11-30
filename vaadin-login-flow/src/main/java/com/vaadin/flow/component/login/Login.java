@@ -31,9 +31,8 @@ import com.vaadin.flow.dom.DisabledUpdateMode;
 import com.vaadin.flow.internal.JsonSerializer;
 import com.vaadin.flow.shared.Registration;
 
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Server-side component for the {@code <vaadin-login>} component.
@@ -50,7 +49,7 @@ public class Login extends Component implements HasEnabled {
 
     private static final String LOGIN_EVENT = "login";
 
-    private final Set<ComponentEventListener<LoginEvent>> loginListeners = new LinkedHashSet<>();
+    private final List<ComponentEventListener<LoginEvent>> loginListeners = new CopyOnWriteArrayList<>();
 
     /**
      * Initializes a new Login with default localization.
@@ -61,8 +60,7 @@ public class Login extends Component implements HasEnabled {
         ComponentUtil.addListener(this, LoginEvent.class, (ComponentEventListener)
                 ((ComponentEventListener<LoginEvent>) e -> {
                     setEnabled(false);
-                    Collections.synchronizedSet(loginListeners)
-                            .forEach(listener -> listener.onComponentEvent(e));
+                    loginListeners.forEach(listener -> listener.onComponentEvent(e));
                 }));
     }
 

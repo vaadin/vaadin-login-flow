@@ -1,6 +1,8 @@
 package com.vaadin.flow.component.login;
 
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.ComponentUtil;
+import com.vaadin.flow.shared.Registration;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -31,9 +33,23 @@ public class LoginTest {
             count.incrementAndGet();
         });
 
+        ComponentEventListener<Login.LoginEvent> listener = e -> count.incrementAndGet();
+
+        // Should be possible to add 2 the same listeners
+        systemUnderTest.addLoginListener(listener);
+        Registration reg = systemUnderTest.addLoginListener(listener);
+
         ComponentUtil.fireEvent(systemUnderTest, new Login.LoginEvent(systemUnderTest, false,
                 "username", "password"));
 
-        Assert.assertEquals(1, count.get());
+        Assert.assertEquals(3, count.get());
+
+        // Should be possible to remove listener
+        reg.remove();
+
+        ComponentUtil.fireEvent(systemUnderTest, new Login.LoginEvent(systemUnderTest, false,
+                "username", "password"));
+
+        Assert.assertEquals(5, count.get());
     }
 }
