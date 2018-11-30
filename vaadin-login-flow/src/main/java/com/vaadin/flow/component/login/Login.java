@@ -160,4 +160,9 @@ public class Login extends Component implements HasEnabled {
         }
     }
 
+    @Override
+    public void onEnabledStateChanged(boolean enabled) {
+        getElement().setProperty("disabled", !enabled);
+    }
+
 }
