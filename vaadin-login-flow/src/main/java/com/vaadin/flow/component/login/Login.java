@@ -31,9 +31,6 @@ import com.vaadin.flow.dom.DisabledUpdateMode;
 import com.vaadin.flow.internal.JsonSerializer;
 import com.vaadin.flow.shared.Registration;
 
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 /**
  * Server-side component for the {@code <vaadin-login>} component.
  * On {@link Login.LoginEvent} component becomes disabled.
@@ -49,19 +46,13 @@ public class Login extends Component implements HasEnabled {
 
     private static final String LOGIN_EVENT = "login";
 
-    private final List<ComponentEventListener<LoginEvent>> loginListeners = new CopyOnWriteArrayList<>();
-
     /**
      * Initializes a new Login with default localization.
      */
     public Login() {
         this(LoginI18n.createDefault());
         getElement().synchronizeProperty("disabled", LOGIN_EVENT);
-        ComponentUtil.addListener(this, LoginEvent.class, (ComponentEventListener)
-                ((ComponentEventListener<LoginEvent>) e -> {
-                    setEnabled(false);
-                    loginListeners.forEach(listener -> listener.onComponentEvent(e));
-                }));
+        addLoginListener(e -> setEnabled(false));
     }
 
     /**
@@ -108,8 +99,7 @@ public class Login extends Component implements HasEnabled {
      * Event is fired only if no action is defined
      */
     public Registration addLoginListener(ComponentEventListener<LoginEvent> listener) {
-        loginListeners.add(listener);
-        return () -> loginListeners.remove(listener);
+        return ComponentUtil.addListener(this, LoginEvent.class, listener);
     }
 
     /**
