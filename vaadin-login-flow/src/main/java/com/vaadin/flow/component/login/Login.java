@@ -21,8 +21,13 @@ import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 
 /**
- * Server-side abstract component for the {@code <vaadin-login>} component
- * {@inheritDoc}
+ * Server-side abstract component for the {@code <vaadin-login>} component.
+ * On {@link Login.LoginEvent} component becomes disabled.
+ * Disabled component stops to process login events, however
+ * the {@link Login.ForgotPasswordEvent} event is processed anyway.
+ * To enable use the {@link com.vaadin.flow.component.HasEnabled#setEnabled(boolean)} method.
+ *
+ * @author Vaadin Ltd
  */
 @Tag("vaadin-login")
 @HtmlImport("frontend://bower_components/vaadin-login/src/vaadin-login.html")

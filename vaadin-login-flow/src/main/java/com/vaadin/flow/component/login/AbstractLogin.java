@@ -30,12 +30,7 @@ import com.vaadin.flow.internal.JsonSerializer;
 import com.vaadin.flow.shared.Registration;
 
 /**
- * Server-side abstract component for {@code <vaadin-login>} and {@code <vaadin-login-overlay>} components.
- * On {@link Login.LoginEvent} component becomes disabled.
- * Disabled component stops to process login events, however
- * the {@link Login.ForgotPasswordEvent} event is processed anyway.
- * To enable use the {@link com.vaadin.flow.component.HasEnabled#setEnabled(boolean)} method.
- *
+ * Abstract component for the {@code <vaadin-login>} component.
  * @author Vaadin Ltd
  */
 public abstract class AbstractLogin extends Component implements HasEnabled {
