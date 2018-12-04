@@ -50,6 +50,16 @@ public class LoginElement extends TestBenchElement implements ILoginElement {
     }
 
     @Override
+    public void submit() {
+        getSubmitButton().click();
+    }
+
+    @Override
+    public void forgotPassword() {
+        getForgotPasswordButton().click();
+    }
+
+    @Override
     public String getTitle() {
         return $(TestBenchElement.class)
                 .attribute("part", "brand").first().$("h1").first().getText();

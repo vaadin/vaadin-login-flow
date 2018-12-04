@@ -109,7 +109,7 @@ public class LoginIT extends BasicIT {
         LoginElement login = getLogin();
 
         login.getUsernameField().setValue("username");
-        login.getPasswordField().setValue("wrongPassword");
+        login.getPasswordField().setValue("password");
         login.submit();
         Assert.assertTrue("Redirect didn't happened on login",
                 getDriver().getCurrentUrl().endsWith("process-login-here"));

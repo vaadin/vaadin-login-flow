@@ -67,6 +67,16 @@ public class LoginOverlayElement extends TestBenchElement implements ILoginEleme
     }
 
     @Override
+    public void submit() {
+        getLogin().getSubmitButton().click();
+    }
+
+    @Override
+    public void forgotPassword() {
+        getLogin().getForgotPasswordButton().click();
+    }
+
+    @Override
     public String getTitle() {
         return getLogin().getTitle();
     }

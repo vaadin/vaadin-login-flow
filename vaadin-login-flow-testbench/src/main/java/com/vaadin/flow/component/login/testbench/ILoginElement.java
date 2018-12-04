@@ -1,5 +1,23 @@
 package com.vaadin.flow.component.login.testbench;
 
+/*
+ * #%L
+ * Vaadin Login Testbench API
+ * %%
+ * Copyright (C) 2018 Vaadin Ltd
+ * %%
+ * This program is available under Commercial Vaadin Add-On License 3.0
+ * (CVALv3).
+ *
+ * See the file license.html distributed with this software for more
+ * information about licensing.
+ *
+ * You should have received a copy of the CVALv3 along with this program.
+ * If not, see <http://vaadin.com/license/cval-3>.
+ * #L%
+ */
+
+
 import com.vaadin.flow.component.button.testbench.ButtonElement;
 import com.vaadin.flow.component.textfield.testbench.PasswordFieldElement;
 import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
@@ -24,9 +42,7 @@ public interface ILoginElement {
     /**
      * Provide a shortcut for clicking the submit button
      */
-    default void submit() {
-        getSubmitButton().click();
-    }
+    void submit();
 
     /**
      * Return the forgot password button
@@ -36,9 +52,7 @@ public interface ILoginElement {
     /**
      * Provide a shortcut for clicking the forgot password button
      */
-    default void forgotPassword() {
-        getForgotPasswordButton().click();
-    }
+    void forgotPassword();
 
     /**
      * Return the title of the login element
