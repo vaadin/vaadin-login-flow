@@ -1,6 +1,7 @@
 package com.vaadin.flow.component.login.test;
 
 import com.vaadin.flow.component.login.testbench.AbstractLoginElement;
+import com.vaadin.flow.component.login.testbench.LoginElement;
 import com.vaadin.flow.component.notification.testbench.NotificationElement;
 import com.vaadin.testbench.parallel.BrowserUtil;
 import org.junit.Assert;
@@ -41,10 +42,36 @@ public abstract class BasicIT extends AbstractParallelTest {
     @Test
     public void enterKeyLogin() {
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
-            throw new AssumptionViolatedException("Skip for Edge due to the sendKeys usage");
+            skipTest("Skip for Edge due to the sendKeys usage");
         }
-        AbstractLoginElement login = getLogin();
-        checkSuccessfulLogin(login, () -> login.sendKeys(Keys.ENTER));
+        LoginElement login = $(LoginElement.class).waitForFirst();
+        checkSuccessfulLogin(login, () -> {
+            login.focus();
+            login.sendKeys(Keys.ENTER);
+        });
+    }
+    @Test
+    public void passwordEnterKeyLogin() {
+        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
+            skipTest("Skip for Edge due to the sendKeys usage");
+        }
+        LoginElement login = $(LoginElement.class).waitForFirst();
+        checkSuccessfulLogin(login, () -> {
+            login.getPasswordField().focus();
+            login.sendKeys(Keys.ENTER);
+        });
+    }
+
+    @Test
+    public void usernameEnterKeyLogin() {
+        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
+            skipTest("Skip for Edge due to the sendKeys usage");
+        }
+        LoginElement login = $(LoginElement.class).waitForFirst();
+        checkSuccessfulLogin(login, () -> {
+            login.getUsernameField().focus();
+            login.sendKeys(Keys.ENTER);
+        });
     }
 
     @Test

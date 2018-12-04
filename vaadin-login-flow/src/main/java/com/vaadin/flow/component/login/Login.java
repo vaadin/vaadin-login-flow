@@ -21,9 +21,8 @@ import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 
 /**
- * Server-side component for the {@code <vaadin-login>} component.
- *
- * @author Vaadin Ltd
+ * Server-side abstract component for the {@code <vaadin-login>} component
+ * {@inheritDoc}
  */
 @Tag("vaadin-login")
 @HtmlImport("frontend://bower_components/vaadin-login/src/vaadin-login.html")

@@ -24,7 +24,9 @@ public class LoginIT extends BasicIT {
 
     @Test
     public void forgotPassword() {
-        AbstractLoginElement login = getLogin();
+        checkForgotPassword(getLogin());
+    }
+    private void checkForgotPassword(AbstractLoginElement login) {
         login.forgotPassword();
         String notification = $(NotificationElement.class).waitForFirst().getText();
         Assert.assertEquals("Forgot password button pressed",
@@ -33,21 +35,28 @@ public class LoginIT extends BasicIT {
 
     @Test
     public void disabledLogin() {
-        getDriver().get(getBaseURL() + "/disabledlogin");
+        getDriver().get(getBaseURL() + "/disable-login");
         AbstractLoginElement login = getLogin();
         login.getUsernameField().setValue("username");
         login.getPasswordField().setValue("password");
         login.submit();
 
-        Assert.assertTrue("Form submit redirect happened, but it should not",
-                getDriver().getCurrentUrl().endsWith("disabledlogin"));
+        Assert.assertFalse("Login notification was shown",
+                $(NotificationElement.class).waitForFirst().isOpen());
 
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
-            throw new AssumptionViolatedException("Skip for Edge due to the sendKeys usage");
+            skipTest("Skip for Edge due to the sendKeys usage");
         }
+        login.getPasswordField().focus();
         login.sendKeys(Keys.ENTER);
-        Assert.assertTrue("Form submit redirect happened, but it should not",
-                getDriver().getCurrentUrl().endsWith("disabledlogin"));
+        Assert.assertFalse("Login notification was shown",
+                $(NotificationElement.class).waitForFirst().isOpen());
+        if (BrowserUtil.isIE(getDesiredCapabilities())) {
+            skipTest("Temporary Skip IE until disabled property won't reflectToAttribute");
+            Assert.assertFalse("Disabled property should not reflect to attribute", login.hasAttribute("disabled"));
+        }
+        // Forgot password event should be processed anyway
+        checkForgotPassword(login);
     }
 
     @Test
