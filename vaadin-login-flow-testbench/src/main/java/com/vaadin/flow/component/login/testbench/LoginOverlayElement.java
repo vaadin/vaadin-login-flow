@@ -17,6 +17,9 @@ package com.vaadin.flow.component.login.testbench;
  * #L%
  */
 
+import com.vaadin.flow.component.button.testbench.ButtonElement;
+import com.vaadin.flow.component.textfield.testbench.PasswordFieldElement;
+import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 import com.vaadin.testbench.TestBenchElement;
 import com.vaadin.testbench.elementsbase.Element;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -25,14 +28,13 @@ import org.openqa.selenium.StaleElementReferenceException;
  * TestBench element for the <code>&lt;vaadin-login-overlay&gt;</code> element
  */
 @Element("vaadin-login-overlay")
-public class LoginOverlayElement extends AbstractLoginElement {
+public class LoginOverlayElement extends TestBenchElement implements ILoginElement {
 
     public TestBenchElement getLoginOverlayElement() {
         return $("vaadin-login-overlay-element").onPage().waitForFirst();
     }
 
-    @Override
-    public AbstractLoginElement getLogin() {
+    public LoginElement getLogin() {
         return getLoginOverlayElement().$(LoginElement.class).first();
     }
 
@@ -42,5 +44,55 @@ public class LoginOverlayElement extends AbstractLoginElement {
         } catch (StaleElementReferenceException var2) {
             return false;
         }
+    }
+
+    @Override
+    public TextFieldElement getUsernameField() {
+        return getLogin().getUsernameField();
+    }
+
+    @Override
+    public PasswordFieldElement getPasswordField() {
+        return getLogin().getPasswordField();
+    }
+
+    @Override
+    public ButtonElement getSubmitButton() {
+        return getLogin().getSubmitButton();
+    }
+
+    @Override
+    public ButtonElement getForgotPasswordButton() {
+        return getLogin().getForgotPasswordButton();
+    }
+
+    @Override
+    public String getTitle() {
+        return getLogin().getTitle();
+    }
+
+    @Override
+    public String getMessage() {
+        return getLogin().getMessage();
+    }
+
+    @Override
+    public String getFormTitle() {
+        return getLogin().getFormTitle();
+    }
+
+    @Override
+    public String getErrorMessageTitle() {
+        return getLogin().getErrorMessageTitle();
+    }
+
+    @Override
+    public String getErrorMessage() {
+        return getLogin().getErrorMessage();
+    }
+
+    @Override
+    public String getAdditionalInformation() {
+        return getLogin().getAdditionalInformation();
     }
 }

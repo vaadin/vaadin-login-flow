@@ -24,13 +24,64 @@ import com.vaadin.testbench.TestBenchElement;
 import com.vaadin.testbench.elementsbase.Element;
 
 /**
- * TestBench element for the <code>&lt;vaadin-login&gt;</code>element
+ * TestBench element for the <code>&lt;vaadin-login&gt;</code> element
  */
 @Element("vaadin-login")
-public class LoginElement extends AbstractLoginElement {
+public class LoginElement extends TestBenchElement implements ILoginElement {
 
     @Override
-    public AbstractLoginElement getLogin() {
-        return this;
+    public TextFieldElement getUsernameField() {
+        return $(TextFieldElement.class).id("username");
+    }
+
+    @Override
+    public PasswordFieldElement getPasswordField() {
+        return $(PasswordFieldElement.class).id("password");
+    }
+
+    @Override
+    public ButtonElement getSubmitButton() {
+        return $(ButtonElement.class).id("submit");
+    }
+
+    @Override
+    public ButtonElement getForgotPasswordButton() {
+        return $(ButtonElement.class).id("forgotPasswordButton");
+    }
+
+    @Override
+    public String getTitle() {
+        return $(TestBenchElement.class)
+                .attribute("part", "brand").first().$("h1").first().getText();
+    }
+
+    @Override
+    public String getMessage() {
+        return $(TestBenchElement.class)
+                .attribute("part", "brand").first().$("p").first().getText();
+    }
+
+    @Override
+    public String getFormTitle() {
+        return $(TestBenchElement.class)
+                .attribute("part", "form").first().$("h2").first().getText();
+    }
+
+    @Override
+    public String getErrorMessageTitle() {
+        return $(TestBenchElement.class)
+                .attribute("part", "error-message").first().$("h5").first().getText();
+    }
+
+    @Override
+    public String getErrorMessage() {
+        return $(TestBenchElement.class)
+                .attribute("part", "error-message").first().$("p").first().getText();
+    }
+
+    @Override
+    public String getAdditionalInformation() {
+        return $(TestBenchElement.class)
+                .attribute("part", "footer").first().$("p").first().getText();
     }
 }

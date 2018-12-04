@@ -1,14 +1,11 @@
 package com.vaadin.flow.component.login.test;
 
-import com.vaadin.flow.component.login.testbench.AbstractLoginElement;
 import com.vaadin.flow.component.login.testbench.LoginElement;
 import com.vaadin.flow.component.notification.testbench.NotificationElement;
 import com.vaadin.testbench.parallel.BrowserUtil;
 import org.junit.Assert;
-import org.junit.AssumptionViolatedException;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Keys;
 
 public abstract class BasicIT extends AbstractParallelTest {
 
@@ -17,11 +14,11 @@ public abstract class BasicIT extends AbstractParallelTest {
         getDriver().get(getBaseURL());
     }
 
-    public abstract AbstractLoginElement getLogin();
+    public abstract LoginElement getLogin();
 
     @Test
     public void testDefaultStrings() {
-        AbstractLoginElement login = getLogin();
+        LoginElement login = getLogin();
 
         Assert.assertEquals("App name", login.getTitle());
         Assert.assertEquals("Inspiring application description", login.getMessage());
@@ -41,11 +38,11 @@ public abstract class BasicIT extends AbstractParallelTest {
 
     @Test
     public void login() {
-        AbstractLoginElement login = getLogin();
+        LoginElement login = getLogin();
         checkSuccessfulLogin(login, () -> login.submit());
     }
 
-    protected void checkSuccessfulLogin(AbstractLoginElement login, Runnable submit) {
+    protected void checkSuccessfulLogin(LoginElement login, Runnable submit) {
         login.getUsernameField().setValue("username");
         login.getPasswordField().setValue("password");
         submit.run();

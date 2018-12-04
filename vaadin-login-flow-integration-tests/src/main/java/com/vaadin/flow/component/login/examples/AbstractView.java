@@ -2,12 +2,10 @@ package com.vaadin.flow.component.login.examples;
 
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.login.AbstractLogin;
-import com.vaadin.flow.component.login.Login;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.OptionalParameter;
-import com.vaadin.flow.router.Route;
 
 public abstract class AbstractView extends Div implements HasUrlParameter<String> {
 

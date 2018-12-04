@@ -1,6 +1,5 @@
 package com.vaadin.flow.component.login.test;
 
-import com.vaadin.flow.component.login.testbench.AbstractLoginElement;
 import com.vaadin.flow.component.login.testbench.LoginElement;
 import com.vaadin.flow.component.login.testbench.LoginOverlayElement;
 import org.junit.Assert;
@@ -15,7 +14,7 @@ public class OverlayIT extends BasicIT {
     }
 
     @Override
-    public AbstractLoginElement getLogin() {
+    public LoginElement getLogin() {
         $("button").id("open").click();
         return $(LoginOverlayElement.class).waitForFirst().getLogin();
     }
@@ -30,11 +29,9 @@ public class OverlayIT extends BasicIT {
         LoginOverlayElement loginOverlay = $(LoginOverlayElement.class).waitForFirst();
         Assert.assertTrue(loginOverlay.isOpened());
 
-        AbstractLoginElement login = loginOverlay.getLogin();
-
-        login.getUsernameField().setValue("value");
-        login.getPasswordField().setValue("value");
-        login.submit();
+        loginOverlay.getUsernameField().setValue("value");
+        loginOverlay.getPasswordField().setValue("value");
+        loginOverlay.submit();
 
         Assert.assertFalse($(LoginOverlayElement.class).exists());
     }

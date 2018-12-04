@@ -1,12 +1,9 @@
 package com.vaadin.flow.component.login.test;
 
-import com.vaadin.flow.component.login.testbench.AbstractLoginElement;
 import com.vaadin.flow.component.login.testbench.LoginElement;
 import com.vaadin.flow.component.notification.testbench.NotificationElement;
 import com.vaadin.testbench.parallel.BrowserUtil;
 import org.junit.Assert;
-import org.junit.AssumptionViolatedException;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
 
@@ -18,7 +15,7 @@ public class LoginIT extends BasicIT {
     }
 
     @Override
-    public AbstractLoginElement getLogin() {
+    public LoginElement getLogin() {
         return $(LoginElement.class).waitForFirst();
     }
 
@@ -26,7 +23,8 @@ public class LoginIT extends BasicIT {
     public void forgotPassword() {
         checkForgotPassword(getLogin());
     }
-    private void checkForgotPassword(AbstractLoginElement login) {
+
+    private void checkForgotPassword(LoginElement login) {
         login.forgotPassword();
         String notification = $(NotificationElement.class).waitForFirst().getText();
         Assert.assertEquals("Forgot password button pressed",
@@ -36,7 +34,7 @@ public class LoginIT extends BasicIT {
     @Test
     public void disabledLogin() {
         getDriver().get(getBaseURL() + "/disable-login");
-        AbstractLoginElement login = getLogin();
+        LoginElement login = getLogin();
         login.getUsernameField().setValue("username");
         login.getPasswordField().setValue("password");
         login.submit();
@@ -64,7 +62,7 @@ public class LoginIT extends BasicIT {
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
             skipTest("Skip for Edge due to the sendKeys usage");
         }
-        AbstractLoginElement login = getLogin();
+        LoginElement login = getLogin();
         checkSuccessfulLogin(login, () -> {
             login.focus();
             login.sendKeys(Keys.ENTER);
@@ -75,7 +73,7 @@ public class LoginIT extends BasicIT {
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
             skipTest("Skip for Edge due to the sendKeys usage");
         }
-        AbstractLoginElement login = getLogin();
+        LoginElement login = getLogin();
         checkSuccessfulLogin(login, () -> {
             login.getPasswordField().focus();
             login.sendKeys(Keys.ENTER);
@@ -96,7 +94,7 @@ public class LoginIT extends BasicIT {
 
     @Test
     public void failedLogin() {
-        AbstractLoginElement login = getLogin();
+        LoginElement login = getLogin();
 
         login.getUsernameField().setValue("username");
         login.getPasswordField().setValue("wrongPassword");
@@ -108,7 +106,7 @@ public class LoginIT extends BasicIT {
     @Test
     public void actionLogin() {
         getDriver().get(getBaseURL() + "/action");
-        AbstractLoginElement login = getLogin();
+        LoginElement login = getLogin();
 
         login.getUsernameField().setValue("username");
         login.getPasswordField().setValue("wrongPassword");
