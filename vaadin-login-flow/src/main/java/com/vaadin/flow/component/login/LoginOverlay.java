@@ -47,7 +47,7 @@ public class LoginOverlay extends AbstractLogin {
     }
 
     private void initEnsureDetachListener() {
-        getElement().addEventListener("opened-changed", event -> {
+        getElement().addPropertyChangeListener("opened", event -> {
             if (autoAddedToTheUi && !isOpened()) {
                 getElement().removeFromParent();
                 autoAddedToTheUi = false;
@@ -72,6 +72,7 @@ public class LoginOverlay extends AbstractLogin {
 
     /**
      * Opens or closes the login overlay.
+     * On open component becomes enabled {@link #setEnabled(boolean)}
      * <p>
      * Note: Overlay will be attached or detached from the DOM automatically,
      * if it was not added manually.
