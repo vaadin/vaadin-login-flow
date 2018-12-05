@@ -27,7 +27,7 @@ import com.vaadin.testbench.elementsbase.Element;
  * TestBench element for the <code>&lt;vaadin-login&gt;</code> element
  */
 @Element("vaadin-login")
-public class LoginElement extends TestBenchElement implements ILoginElement {
+public class LoginElement extends TestBenchElement implements Login {
 
     @Override
     public TextFieldElement getUsernameField() {

@@ -22,7 +22,7 @@ import com.vaadin.flow.component.button.testbench.ButtonElement;
 import com.vaadin.flow.component.textfield.testbench.PasswordFieldElement;
 import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 
-public interface ILoginElement {
+interface Login {
 
     /**
      * Return the username field

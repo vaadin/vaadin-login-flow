@@ -28,7 +28,7 @@ import org.openqa.selenium.StaleElementReferenceException;
  * TestBench element for the <code>&lt;vaadin-login-overlay&gt;</code> element
  */
 @Element("vaadin-login-overlay")
-public class LoginOverlayElement extends TestBenchElement implements ILoginElement {
+public class LoginOverlayElement extends TestBenchElement implements Login {
 
     public TestBenchElement getLoginOverlayElement() {
         return $("vaadin-login-overlay-element").onPage().waitForFirst();
