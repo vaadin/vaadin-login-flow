@@ -21,6 +21,7 @@ public class LoginView extends DemoView {
         // begin-source-example
         // source-example-heading: Basic Demo
         Login component = new Login();
+        component.addLoginListener(e -> component.setError(true));
         // end-source-example
 
         addCard("Basic Demo", component);
