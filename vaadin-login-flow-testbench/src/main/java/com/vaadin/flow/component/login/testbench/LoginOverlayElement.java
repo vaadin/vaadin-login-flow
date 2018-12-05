@@ -40,8 +40,8 @@ public class LoginOverlayElement extends TestBenchElement implements ILoginEleme
 
     public boolean isOpened() {
         try {
-            return this.getPropertyBoolean(new String[]{"opened"});
-        } catch (StaleElementReferenceException var2) {
+            return getPropertyBoolean("opened");
+        } catch (StaleElementReferenceException e) {
             return false;
         }
     }
