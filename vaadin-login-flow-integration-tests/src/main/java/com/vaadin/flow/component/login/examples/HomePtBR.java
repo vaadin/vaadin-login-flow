@@ -11,8 +11,6 @@ public class HomePtBR extends Div {
     public HomePtBR() {
         this.setSizeFull();
         final LoginI18n i18n = LoginI18n.createDefault();
-        i18n.getHeader().setTitle("Nome do aplicativo");
-        i18n.getHeader().setDescription("Descrição do aplicativo");
         i18n.getForm().setUsername("Usuário");
         i18n.getForm().setTitle("Acesse a sua conta");
         i18n.getForm().setSubmit("Entrar");

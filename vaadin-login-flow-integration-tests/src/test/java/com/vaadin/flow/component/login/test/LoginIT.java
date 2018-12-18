@@ -59,17 +59,6 @@ public class LoginIT extends BasicIT {
     }
 
     @Test
-    public void enterKeyLogin() {
-        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
-            skipTest("Skip for Edge due to the sendKeys usage");
-        }
-        LoginElement login = getLogin();
-        checkSuccessfulLogin(login, () -> {
-            login.focus();
-            login.sendKeys(Keys.ENTER);
-        });
-    }
-    @Test
     public void passwordEnterKeyLogin() {
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
             skipTest("Skip for Edge due to the sendKeys usage");

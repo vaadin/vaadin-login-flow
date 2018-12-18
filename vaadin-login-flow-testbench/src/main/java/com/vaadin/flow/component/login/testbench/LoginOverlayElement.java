@@ -79,14 +79,24 @@ public class LoginOverlayElement extends TestBenchElement implements Login {
         getLogin().getForgotPasswordButton().click();
     }
 
-    @Override
+    /**
+     * Returns the title of the login element
+     */
     public String getTitle() {
-        return getLogin().getTitle();
+        return getLoginOverlayElement().$(TestBenchElement.class)
+                .attribute("part", "brand").first().$("h1").first().getText();
     }
 
-    @Override
-    public String getMessage() {
-        return getLogin().getMessage();
+    /**
+     * Returns the description of the login element
+     */
+    public String getDescription() {
+        return getLoginOverlayElement().$(TestBenchElement.class)
+                .attribute("part", "brand").first().$("p").first().getText();
+    }
+
+    public TestBenchElement getTitleComponent() {
+        return getLoginOverlayElement().$(TestBenchElement.class).attribute("slot", "title").first();
     }
 
     @Override

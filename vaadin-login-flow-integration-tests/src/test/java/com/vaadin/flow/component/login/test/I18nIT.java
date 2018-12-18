@@ -15,8 +15,6 @@ public class I18nIT extends AbstractParallelTest {
     @Test
     public void testI18n() {
         LoginElement login = $(LoginElement.class).waitForFirst();
-        Assert.assertEquals("Nome do aplicativo", login.getTitle());
-        Assert.assertEquals("Descrição do aplicativo", login.getMessage());
         Assert.assertEquals("Acesse a sua conta", login.getFormTitle());
         Assert.assertEquals("Usuário", login.getUsernameField().getLabel());
         Assert.assertEquals("Senha", login.getPasswordField().getLabel());
