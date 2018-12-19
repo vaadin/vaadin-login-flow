@@ -75,7 +75,7 @@ public class LoginIT extends BasicIT {
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
             skipTest("Skip for Edge due to the sendKeys usage");
         }
-        LoginElement login = $(LoginElement.class).waitForFirst();
+        LoginElement login = getLogin();
         checkSuccessfulLogin(login, () -> {
             login.getUsernameField().focus();
             login.sendKeys(Keys.ENTER);

@@ -80,22 +80,39 @@ public class LoginOverlayElement extends TestBenchElement implements Login {
     }
 
     /**
-     * Returns the title of the login element
+     * Returns the title displayed in the login element
      */
     public String getTitle() {
+        if (hasTitleComponent()) {
+            return getTitleComponent().getText();
+        }
         return getLoginOverlayElement().$(TestBenchElement.class)
                 .attribute("part", "brand").first().$("h1").first().getText();
     }
 
     /**
-     * Returns the description of the login element
+     * Returns the description displayed in the login element
      */
     public String getDescription() {
         return getLoginOverlayElement().$(TestBenchElement.class)
                 .attribute("part", "brand").first().$("p").first().getText();
     }
 
+    /**
+     * Checks if anything was set into the title slot
+     */
+    public boolean hasTitleComponent() {
+        return getLoginOverlayElement().$(TestBenchElement.class).attribute("slot", "title").exists();
+    }
+
+    /**
+     * Returns the title component which is set into the title slot of the login element.
+     * If was not set returns <code>null</code>
+     */
     public TestBenchElement getTitleComponent() {
+        if (!hasTitleComponent()) {
+            return null;
+        }
         return getLoginOverlayElement().$(TestBenchElement.class).attribute("slot", "title").first();
     }
 
