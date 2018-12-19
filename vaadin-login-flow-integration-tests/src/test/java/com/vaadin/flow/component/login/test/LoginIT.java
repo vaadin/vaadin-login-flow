@@ -50,10 +50,8 @@ public class LoginIT extends BasicIT {
         login.sendKeys(Keys.ENTER);
         Assert.assertFalse("Login notification was shown",
                 $(NotificationElement.class).waitForFirst().isOpen());
-        if (BrowserUtil.isIE(getDesiredCapabilities())) {
-            skipTest("Temporary Skip IE until disabled property won't reflectToAttribute");
-            Assert.assertFalse("Disabled property should not reflect to attribute", login.hasAttribute("disabled"));
-        }
+
+        Assert.assertFalse("Disabled property should not reflect to attribute", login.hasAttribute("disabled"));
         // Forgot password event should be processed anyway
         checkForgotPassword(login);
     }
