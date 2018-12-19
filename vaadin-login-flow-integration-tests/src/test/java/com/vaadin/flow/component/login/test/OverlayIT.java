@@ -21,7 +21,7 @@ public class OverlayIT extends BasicIT {
     }
 
     private void openOverlay() {
-        $("button").id("open").click();
+        $("button").waitForFirst().click();
     }
 
     @Override

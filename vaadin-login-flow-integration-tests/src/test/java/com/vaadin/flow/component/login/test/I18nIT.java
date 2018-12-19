@@ -14,7 +14,7 @@ public class I18nIT extends AbstractParallelTest {
 
     @Test
     public void testI18n() {
-        $("button").id("open").click();
+        $("button").waitForFirst().click();
         LoginOverlayElement login = $(LoginOverlayElement.class).waitForFirst();
         Assert.assertEquals("Nome do aplicativo", login.getTitle());
         Assert.assertEquals("Descrição do aplicativo", login.getDescription());
