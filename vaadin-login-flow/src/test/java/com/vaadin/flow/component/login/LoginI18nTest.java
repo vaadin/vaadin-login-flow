@@ -9,10 +9,6 @@ public class LoginI18nTest {
     public void createDefault() {
         LoginI18n i18n = LoginI18n.createDefault();
 
-        i18n.setHeader(new LoginI18n.Header());
-        Assert.assertEquals("App name", i18n.getHeader().getTitle());
-        Assert.assertEquals("Inspiring application description", i18n.getHeader().getDescription());
-
         Assert.assertEquals("Log in", i18n.getForm().getTitle());
         Assert.assertEquals("Username", i18n.getForm().getUsername());
         Assert.assertEquals("Password", i18n.getForm().getPassword());
