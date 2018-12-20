@@ -73,7 +73,7 @@ public abstract class AbstractParallelTest extends ParallelTest {
         ie11Windows8_1.setPlatform(Platform.WIN8_1);
 
         DesiredCapabilities safari = BrowserUtil.safari();
-        safari.setPlatform(Platform.SIERRA);
+        safari.setVersion("11");
         return Arrays.asList(ie11Windows8_1, BrowserUtil.firefox(),
                 BrowserUtil.chrome(), BrowserUtil.edge(), safari);
     }
