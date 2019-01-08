@@ -73,6 +73,7 @@ public class LoginView extends DemoView {
     private LoginI18n createPortugueseI18n() {
         final LoginI18n i18n = LoginI18n.createDefault();
 
+        i18n.setHeader(new LoginI18n.Header());
         i18n.getHeader().setTitle("Nome do aplicativo");
         i18n.getHeader().setDescription("Descrição do aplicativo");
         i18n.getForm().setUsername("Usuário");
