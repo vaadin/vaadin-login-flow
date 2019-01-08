@@ -1,10 +1,13 @@
 package com.vaadin.flow.component.login.vaadincom;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.login.AbstractLogin;
 import com.vaadin.flow.component.login.Login;
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.demo.DemoView;
 import com.vaadin.flow.router.Route;
 
@@ -32,7 +35,7 @@ public class LoginView extends DemoView {
         });
         // end-source-example
 
-        addCard("Basic Demo", component);
+        addCard("Basic Demo", createLayout(component));
     }
 
     @SuppressWarnings("unused")
@@ -52,7 +55,7 @@ public class LoginView extends DemoView {
             event -> component.setI18n(createPortugueseI18n()));
         // end-source-example
 
-        addCard("Login with internationalization", component, updateI18nButton);
+        addCard("Login with internationalization", createLayout(component), updateI18nButton);
     }
 
     private void overlay() {
@@ -84,5 +87,18 @@ public class LoginView extends DemoView {
             "Caso necessite apresentar alguma informação extra para o usuário"
                 + " (como credenciais padrão), este é o lugar.");
         return i18n;
+    }
+
+    private Component createLayout(Login login) {
+        VerticalLayout layout = new VerticalLayout();
+        layout.add(login);
+
+        layout.setSizeFull();
+        layout.setPadding(true);
+        layout.setAlignItems(FlexComponent.Alignment.CENTER);
+        layout.setHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
+        layout.getStyle().set("background", "var(--lumo-shade-5pct)");
+
+        return layout;
     }
 }
