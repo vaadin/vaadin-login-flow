@@ -51,17 +51,17 @@ public class LoginOverlayElement extends TestBenchElement implements Login {
 
     @Override
     public TextFieldElement getUsernameField() {
-        return getLogin().getUsernameField();
+        return getLoginOverlayWrapper().$(TextFieldElement.class).id("username");
     }
 
     @Override
     public PasswordFieldElement getPasswordField() {
-        return getLogin().getPasswordField();
+        return getLoginOverlayWrapper().$(PasswordFieldElement.class).id("password");
     }
 
     @Override
     public ButtonElement getSubmitButton() {
-        return getLogin().getSubmitButton();
+        return getLoginOverlayWrapper().$(ButtonElement.class).id("submit");
     }
 
     @Override

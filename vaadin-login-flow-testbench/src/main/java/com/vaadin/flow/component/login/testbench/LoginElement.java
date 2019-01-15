@@ -82,8 +82,7 @@ public class LoginElement extends TestBenchElement implements Login {
 
     @Override
     public String getAdditionalInformation() {
-        return $("slot").attribute("name", "footer").first()
-                .$("span").first().getText();
+        return $("span").first().getText();
     }
 
     @Override
