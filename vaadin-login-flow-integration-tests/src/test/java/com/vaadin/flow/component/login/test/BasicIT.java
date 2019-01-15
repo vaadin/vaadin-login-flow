@@ -37,12 +37,6 @@ public abstract class BasicIT extends AbstractParallelTest {
                 login.getAdditionalInformation());
     }
 
-    @Test
-    public void login() {
-        LoginElement login = getLogin();
-        checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> login.submit());
-    }
-
     protected void checkSuccessfulLogin(TextFieldElement usernameField, PasswordFieldElement passwordField,
                                         Runnable submit) {
         usernameField.setValue("username");

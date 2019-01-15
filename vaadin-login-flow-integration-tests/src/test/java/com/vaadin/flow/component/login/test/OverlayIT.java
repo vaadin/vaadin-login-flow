@@ -25,7 +25,6 @@ public class OverlayIT extends BasicIT {
     }
 
     @Test
-    @Override
     public void login() {
         openOverlay();
         LoginOverlayElement overlay = $(LoginOverlayElement.class).waitForFirst();

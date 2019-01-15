@@ -21,6 +21,12 @@ public class LoginIT extends BasicIT {
     }
 
     @Test
+    public void login() {
+        LoginElement login = getLogin();
+        checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> login.submit());
+    }
+
+    @Test
     public void forgotPassword() {
         checkForgotPassword(getLogin());
     }
