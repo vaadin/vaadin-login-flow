@@ -82,8 +82,14 @@ interface Login {
     String getAdditionalInformation();
 
     /**
-     * Return the footer component.
-     * By default footer component contains additional information value
+     * Return the custom footer component.
+     *
      */
     TestBenchElement getFooter();
+
+    /**
+     * Whether the custom footer component was set or not.
+     *
+     */
+    boolean hasFooter();
 }

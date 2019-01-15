@@ -82,24 +82,17 @@ public class LoginElement extends TestBenchElement implements Login {
 
     @Override
     public String getAdditionalInformation() {
-        if (hasCustomFooter()) {
-            return getFooter().getText();
-        }
-
         return $("slot").attribute("name", "footer").first()
                 .$("span").first().getText();
     }
 
-    private boolean hasCustomFooter() {
+    @Override
+    public boolean hasFooter() {
         return $(TestBenchElement.class).attribute("slot", "footer").exists();
     }
 
     @Override
     public TestBenchElement getFooter() {
-        if (hasCustomFooter()) {
-            return $(TestBenchElement.class).attribute("slot", "footer").first();
-        }
-
-        return $("slot").attribute("name", "footer").first().$("span").first();
+        return $(TestBenchElement.class).attribute("slot", "footer").first();
     }
 }
