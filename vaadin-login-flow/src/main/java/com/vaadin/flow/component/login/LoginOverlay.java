@@ -33,8 +33,6 @@ import com.vaadin.flow.component.dependency.HtmlImport;
  */
 @Tag("vaadin-login-overlay")
 @HtmlImport("frontend://bower_components/vaadin-login/src/vaadin-login-overlay.html")
-@HtmlImport("frontend://bower_components/vaadin-login/src/vaadin-login-overlay-element.html")
-@HtmlImport("frontend://bower_components/vaadin-login/src/vaadin-login.html")
 public class LoginOverlay extends AbstractLogin {
 
     private Component title;
