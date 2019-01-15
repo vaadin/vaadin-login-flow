@@ -82,7 +82,9 @@ public class LoginElement extends TestBenchElement implements Login {
 
     @Override
     public String getAdditionalInformation() {
-        return $("span").first().getText();
+        return $("span").first()
+                // Using textContent, since getText() works unpredictable in Edge
+                .getPropertyString("textContent");
     }
 
     @Override
