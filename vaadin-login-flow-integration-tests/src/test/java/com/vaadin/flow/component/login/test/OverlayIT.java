@@ -24,6 +24,14 @@ public class OverlayIT extends BasicIT {
         $("button").waitForFirst().click();
     }
 
+    @Test
+    @Override
+    public void login() {
+        openOverlay();
+        LoginOverlayElement overlay = $(LoginOverlayElement.class).waitForFirst();
+        checkSuccessfulLogin(overlay.getUsernameField(), overlay.getPasswordField(), () -> overlay.submit());
+    }
+
     @Override
     public void testDefaultStrings() {
         super.testDefaultStrings();
@@ -59,7 +67,8 @@ public class OverlayIT extends BasicIT {
 
         Assert.assertEquals("Component title", title.getText());
 
-        checkSuccessfulLogin(loginOverlay.getLogin(), () -> loginOverlay.submit());
+        checkSuccessfulLogin(loginOverlay.getUsernameField(), loginOverlay.getPasswordField(),
+                () -> loginOverlay.submit());
 
         Assert.assertFalse(loginOverlay.isOpened());
         openOverlay();

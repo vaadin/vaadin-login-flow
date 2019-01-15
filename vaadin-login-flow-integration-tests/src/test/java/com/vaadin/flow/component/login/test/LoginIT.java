@@ -62,7 +62,7 @@ public class LoginIT extends BasicIT {
             skipTest("Skip for Edge due to the sendKeys usage");
         }
         LoginElement login = getLogin();
-        checkSuccessfulLogin(login, () -> {
+        checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> {
             login.getPasswordField().focus();
             login.sendKeys(Keys.ENTER);
         });
@@ -74,7 +74,7 @@ public class LoginIT extends BasicIT {
             skipTest("Skip for Edge due to the sendKeys usage");
         }
         LoginElement login = getLogin();
-        checkSuccessfulLogin(login, () -> {
+        checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> {
             login.getUsernameField().focus();
             login.sendKeys(Keys.ENTER);
         });

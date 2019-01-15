@@ -2,6 +2,8 @@ package com.vaadin.flow.component.login.test;
 
 import com.vaadin.flow.component.login.testbench.LoginElement;
 import com.vaadin.flow.component.notification.testbench.NotificationElement;
+import com.vaadin.flow.component.textfield.testbench.PasswordFieldElement;
+import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 import com.vaadin.testbench.TestBenchElement;
 import com.vaadin.testbench.parallel.BrowserUtil;
 import org.junit.Assert;
@@ -38,12 +40,13 @@ public abstract class BasicIT extends AbstractParallelTest {
     @Test
     public void login() {
         LoginElement login = getLogin();
-        checkSuccessfulLogin(login, () -> login.submit());
+        checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> login.submit());
     }
 
-    protected void checkSuccessfulLogin(LoginElement login, Runnable submit) {
-        login.getUsernameField().setValue("username");
-        login.getPasswordField().setValue("password");
+    protected void checkSuccessfulLogin(TextFieldElement usernameField, PasswordFieldElement passwordField,
+                                        Runnable submit) {
+        usernameField.setValue("username");
+        passwordField.setValue("password");
         submit.run();
         String notification = $(NotificationElement.class).waitForFirst().getText();
         Assert.assertEquals("Successful login", notification);
