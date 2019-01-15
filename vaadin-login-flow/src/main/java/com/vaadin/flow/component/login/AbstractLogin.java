@@ -199,7 +199,7 @@ public abstract class AbstractLogin extends Component implements HasEnabled {
             return;
         }
 
-        footer.getElement().setAttribute("slot", "title");
+        footer.getElement().setAttribute("slot", "footer");
         getElement().appendChild(footer.getElement());
     }
 

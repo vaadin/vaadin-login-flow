@@ -111,4 +111,5 @@ public class LoginIT extends BasicIT {
         Assert.assertTrue("Redirect didn't happened on login",
                 getDriver().getCurrentUrl().endsWith("process-login-here"));
     }
+
 }

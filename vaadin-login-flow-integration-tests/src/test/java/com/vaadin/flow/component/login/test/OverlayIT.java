@@ -5,14 +5,13 @@ import com.vaadin.flow.component.login.testbench.LoginOverlayElement;
 import com.vaadin.testbench.TestBenchElement;
 import com.vaadin.testbench.parallel.BrowserUtil;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class OverlayIT extends BasicIT {
 
-    @Before
-    public void init() {
-        getDriver().get(getBaseURL() + "/overlay");
+    @Override
+    protected String getBaseURL() {
+        return super.getBaseURL() + "/overlay";
     }
 
     @Override
@@ -35,7 +34,7 @@ public class OverlayIT extends BasicIT {
 
     @Test
     public void testOverlaySelfAttached() {
-        getDriver().get(getBaseURL() + "/overlayselfattached");
+        getDriver().get(super.getBaseURL() + "/overlayselfattached");
 
         Assert.assertFalse($(LoginOverlayElement.class).exists());
         openOverlay();
@@ -56,7 +55,7 @@ public class OverlayIT extends BasicIT {
 
     @Test
     public void testTitleComponent() {
-        getDriver().get(getBaseURL() + "/overlay/component-title");
+        getDriver().get(getBaseURL() + "/component-title");
         openOverlay();
 
         LoginOverlayElement loginOverlay = $(LoginOverlayElement.class).waitForFirst();
@@ -83,7 +82,7 @@ public class OverlayIT extends BasicIT {
 
     @Test
     public void testTitleAndDescriptionStrings() {
-        getDriver().get(getBaseURL() + "/overlay/property-title-description");
+        getDriver().get(getBaseURL() + "/property-title-description");
         openOverlay();
 
         LoginOverlayElement loginOverlay = $(LoginOverlayElement.class).waitForFirst();
