@@ -106,6 +106,25 @@ public abstract class AbstractLogin extends Component implements HasEnabled {
         return getElement().getProperty("error", false);
     }
 
+    /**
+     * Sets whether to show or hide the forgot password button.
+     * The button is visible by default
+     *
+     * @see #isForgotPasswordButtonVisible()
+     */
+    public void setForgotPasswordVisible(boolean forgotPasswordVisible) {
+        getElement().setProperty("noForgotPassword", !forgotPasswordVisible);
+    }
+
+    /**
+     * Returns whether the forgot password button is visible or not
+     *
+     * @return {@code true} if the forgot password button is visible
+     *         {@code false} otherwise
+     */
+    public boolean isForgotPasswordButtonVisible() {
+        return !getElement().getProperty("noForgotPassword", false);
+    }
 
     /**
      * Sets the internationalized messages to be used by this instance.
