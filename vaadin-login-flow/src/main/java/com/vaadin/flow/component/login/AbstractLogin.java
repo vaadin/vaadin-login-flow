@@ -45,8 +45,6 @@ public abstract class AbstractLogin extends Component implements HasEnabled {
 
     private static final String LOGIN_EVENT = "login";
 
-    private Component footer;
-
     /**
      * Initializes a new AbstractLogin with a default localization.
      */
@@ -178,5 +176,4 @@ public abstract class AbstractLogin extends Component implements HasEnabled {
     public void onEnabledStateChanged(boolean enabled) {
         getElement().setProperty("disabled", !enabled);
     }
-
 }
