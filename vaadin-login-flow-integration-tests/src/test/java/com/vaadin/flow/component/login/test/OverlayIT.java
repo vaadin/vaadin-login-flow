@@ -4,7 +4,6 @@ import com.vaadin.flow.component.login.testbench.LoginElement;
 import com.vaadin.flow.component.login.testbench.LoginOverlayElement;
 import com.vaadin.testbench.TestBenchElement;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class OverlayIT extends BasicIT {
@@ -91,11 +90,4 @@ public class OverlayIT extends BasicIT {
         Assert.assertEquals("Property description", loginOverlay.getDescription());
     }
 
-    @Test
-    @Ignore("Overlay doesn't support custom footer at this moment")
-    // https://github.com/vaadin/vaadin-login/issues/67
-    @Override
-    public void footer() {
-        super.footer();
-    }
 }

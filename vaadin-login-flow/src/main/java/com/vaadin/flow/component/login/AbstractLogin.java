@@ -179,36 +179,4 @@ public abstract class AbstractLogin extends Component implements HasEnabled {
         getElement().setProperty("disabled", !enabled);
     }
 
-    /**
-     * Sets the application title, <code>null</code> to remove any previously
-     * set custom footer.
-     *
-     * @see #getFooter()
-     * @param footer
-     *            the footer component to set, or <code>null</code> to remove
-     *            any previously set custom footer
-     *            and display the default footer content
-     */
-    public void setFooter(Component footer) {
-        if (this.footer != null) {
-            this.footer.getElement().removeFromParent();
-        }
-
-        this.footer = footer;
-        if (footer == null) {
-            return;
-        }
-
-        footer.getElement().setAttribute("slot", "footer");
-        getElement().appendChild(footer.getElement());
-    }
-
-    /**
-     * Returns custom footer component which was set via {@link #setFooter(Component)}
-     *
-     * @return the footer component, <code>null</code> if nothing was set
-     */
-    public Component getFooter() {
-        return footer;
-    }
 }
