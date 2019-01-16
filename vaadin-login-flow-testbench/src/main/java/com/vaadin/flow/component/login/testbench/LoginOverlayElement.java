@@ -71,7 +71,7 @@ public class LoginOverlayElement extends TestBenchElement implements Login {
 
     @Override
     public void submit() {
-        getLogin().getSubmitButton().click();
+        getSubmitButton().click();
     }
 
     @Override
