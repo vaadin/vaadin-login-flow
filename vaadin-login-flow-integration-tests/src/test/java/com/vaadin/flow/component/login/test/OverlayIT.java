@@ -36,6 +36,7 @@ public class OverlayIT extends BasicIT {
         LoginOverlayElement loginOverlay = $(LoginOverlayElement.class).waitForFirst();
         Assert.assertEquals("App name", loginOverlay.getTitle());
         Assert.assertEquals("Application description", loginOverlay.getDescription());
+        checkLoginForm(loginOverlay.getUsernameField(), loginOverlay.getPasswordField(), loginOverlay.getSubmitButton());
     }
 
     @Test

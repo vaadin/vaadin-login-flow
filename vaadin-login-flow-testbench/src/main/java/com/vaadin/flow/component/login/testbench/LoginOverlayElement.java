@@ -76,7 +76,7 @@ public class LoginOverlayElement extends TestBenchElement implements Login {
 
     @Override
     public void forgotPassword() {
-        getLogin().getForgotPasswordButton().click();
+        getForgotPasswordButton().click();
     }
 
     /**
