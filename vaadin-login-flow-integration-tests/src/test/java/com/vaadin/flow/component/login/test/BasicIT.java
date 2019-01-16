@@ -33,7 +33,7 @@ public abstract class BasicIT extends AbstractParallelTest {
         Assert.assertEquals("In case you need to provide some additional info for the user.",
                 login.getAdditionalInformation());
 
-        Assert.assertTrue(getLogin().getForgotPasswordButton().isDisplayed());
+        Assert.assertFalse(getLogin().getForgotPasswordButton().hasAttribute("hidden"));
     }
 
     protected void checkLoginForm(TextFieldElement username, PasswordFieldElement password, ButtonElement submit) {
@@ -55,7 +55,7 @@ public abstract class BasicIT extends AbstractParallelTest {
     public void testNoForgotPasswordButton() {
         getDriver().get(getBaseURL() + "/no-forgot-password");
 
-        Assert.assertFalse(getLogin().getForgotPasswordButton().isDisplayed());
+        Assert.assertTrue(getLogin().getForgotPasswordButton().hasAttribute("hidden"));
     }
 
 }
