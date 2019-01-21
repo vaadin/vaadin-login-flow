@@ -43,7 +43,7 @@ public abstract class AbstractView extends Div implements HasUrlParameter<String
         login.setEnabled(!"disable-login".equals(s));
 
         if ("no-forgot-password".equals(s)) {
-            login.setForgotPasswordVisible(false);
+            login.setForgotPasswordButtonVisible(false);
         }
     }
 }
