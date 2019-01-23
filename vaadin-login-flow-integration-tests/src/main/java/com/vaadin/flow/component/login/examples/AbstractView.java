@@ -32,7 +32,6 @@ public abstract class AbstractView extends Div implements HasUrlParameter<String
             }
 
             login.setError(true);
-            login.setEnabled(true);
         });
 
         add(login, notification);
