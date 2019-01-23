@@ -113,6 +113,13 @@ public class LoginIT extends BasicIT {
                 login.getErrorMessage());
 
         Assert.assertTrue(login.isEnabled());
+        login.submit();
+        Assert.assertTrue(login.isEnabled());
+        login.submit();
+
+        // Should be disabled after 3 attempts
+        // TODO Uncomment when client part wil be able to set Error without autoEnable
+        // Assert.assertFalse(login.isEnabled());
     }
 
     @Test
