@@ -40,7 +40,7 @@ public class LoginFormIT extends BasicIT {
 
     private void checkForgotPassword(LoginFormElement login) {
         login.forgotPassword();
-        String notification = $(NotificationElement.class).waitForFirst().getText();
+        String notification = $(NotificationElement.class).waitForFirst().getText().trim();
         Assert.assertEquals("Forgot password button pressed",
                 notification);
     }

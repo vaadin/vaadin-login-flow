@@ -45,7 +45,7 @@ public abstract class BasicIT extends AbstractParallelTest {
         usernameField.setValue("username");
         passwordField.setValue("password");
         submit.run();
-        String notification = $(NotificationElement.class).waitForFirst().getText();
+        String notification = $(NotificationElement.class).waitForFirst().getText().trim();
         Assert.assertEquals("Successful login", notification);
     }
 
