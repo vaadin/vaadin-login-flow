@@ -56,9 +56,6 @@ public class LoginFormIT extends BasicIT {
         Assert.assertFalse("Login notification was shown",
                 $(NotificationElement.class).waitForFirst().isOpen());
 
-        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
-            skipTest("Skip for Edge due to the sendKeys usage");
-        }
         sendKeys(login.getPasswordField(), Keys.ENTER);
         Assert.assertFalse("Login notification was shown",
                 $(NotificationElement.class).waitForFirst().isOpen());
@@ -78,9 +75,6 @@ public class LoginFormIT extends BasicIT {
 
     @Test
     public void passwordEnterKeyLogin() {
-        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
-            skipTest("Skip for Edge due to the sendKeys usage");
-        }
         LoginFormElement login = getLoginForm();
         checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> {
             sendKeys(login.getPasswordField(), Keys.ENTER);
@@ -89,9 +83,6 @@ public class LoginFormIT extends BasicIT {
 
     @Test
     public void usernameEnterKeyLogin() {
-        if (BrowserUtil.isEdge(getDesiredCapabilities())) {
-            skipTest("Skip for Edge due to the sendKeys usage");
-        }
         LoginFormElement login = getLoginForm();
         checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> {
             sendKeys(login.getUsernameField(), Keys.ENTER);
