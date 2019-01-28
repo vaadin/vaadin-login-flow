@@ -59,13 +59,21 @@ public class LoginFormIT extends BasicIT {
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
             skipTest("Skip for Edge due to the sendKeys usage");
         }
-        login.getPasswordField().sendKeys(Keys.ENTER);
+        sendKeys(login.getPasswordField(), Keys.ENTER);
         Assert.assertFalse("Login notification was shown",
                 $(NotificationElement.class).waitForFirst().isOpen());
 
         Assert.assertFalse("Disabled property should not reflect to attribute", login.hasAttribute("disabled"));
         // Forgot password event should be processed anyway
         checkForgotPassword(login);
+    }
+
+    private void sendKeys(TestBenchElement textField, CharSequence... keys) {
+        if (BrowserUtil.isEdge(getDesiredCapabilities()) || BrowserUtil.isFirefox(getDesiredCapabilities())) {
+            // Firefox and Edge don't send keys to the slotted input
+            textField = textField.$("input").attribute("slot", "input").first();
+        }
+        textField.sendKeys(keys);
     }
 
     @Test
@@ -75,7 +83,7 @@ public class LoginFormIT extends BasicIT {
         }
         LoginFormElement login = getLoginForm();
         checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> {
-            login.getPasswordField().sendKeys(Keys.ENTER);
+            sendKeys(login.getPasswordField(), Keys.ENTER);
         });
     }
 
@@ -86,7 +94,7 @@ public class LoginFormIT extends BasicIT {
         }
         LoginFormElement login = getLoginForm();
         checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> {
-            login.getUsernameField().sendKeys(Keys.ENTER);
+            sendKeys(login.getUsernameField(), Keys.ENTER);
         });
     }
 

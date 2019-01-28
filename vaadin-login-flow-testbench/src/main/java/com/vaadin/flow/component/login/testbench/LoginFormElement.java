@@ -47,13 +47,13 @@ public class LoginFormElement extends TestBenchElement implements Login {
         return $(ButtonElement.class).attribute("part", "vaadin-login-submit").first();
     }
 
-    public LoginFormWrapperElement getFormWrapper() {
-        return $(LoginFormWrapperElement.class).first();
+    private TestBenchElement getFormWrapper() {
+        return $("vaadin-login-form-wrapper").first();
     }
 
     @Override
     public ButtonElement getForgotPasswordButton() {
-        return getFormWrapper().getForgotPasswordButton();
+        return getFormWrapper().$(ButtonElement.class).id("forgotPasswordButton");
     }
 
     @Override
@@ -68,26 +68,28 @@ public class LoginFormElement extends TestBenchElement implements Login {
 
     @Override
     public String getFormTitle() {
-        return getFormWrapper().getFormTitle();
+        return getFormWrapper().$(TestBenchElement.class)
+                .attribute("part", "form").first().$("h2").first().getText();
     }
 
     @Override
     public TestBenchElement getErrorComponent() {
-        return getFormWrapper().getErrorComponent();
+        return getFormWrapper().$(TestBenchElement.class).attribute("part", "error-message").first();
     }
 
     @Override
     public String getErrorMessageTitle() {
-        return getFormWrapper().getErrorMessageTitle();
+        return getErrorComponent().$("h5").first().getText();
     }
 
     @Override
     public String getErrorMessage() {
-        return getFormWrapper().getErrorMessage();
+        return getErrorComponent().$("p").first().getText();
     }
 
     @Override
     public String getAdditionalInformation() {
-        return getFormWrapper().getAdditionalInformation();
+        return getFormWrapper().$(TestBenchElement.class)
+                .attribute("part", "footer").first().$("p").first().getText();
     }
 }
