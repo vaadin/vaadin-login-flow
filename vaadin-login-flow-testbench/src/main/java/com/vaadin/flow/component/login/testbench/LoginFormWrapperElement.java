@@ -27,60 +27,32 @@ import com.vaadin.testbench.TestBenchElement;
 import com.vaadin.testbench.elementsbase.Element;
 
 /**
- * TestBench element for the <code>&lt;vaadin-login&gt;</code> element
+ * TestBench element for the <code>&lt;vaadin-login-form-wrapper&gt;</code> element
  */
-@Element("vaadin-login")
-public class LoginElement extends TestBenchElement implements Login {
+@Element("vaadin-login-form-wrapper")
+public class LoginFormWrapperElement extends TestBenchElement {
 
-    @Override
-    public TextFieldElement getUsernameField() {
-        return $(TextFieldElement.class).id("username");
-    }
-
-    @Override
-    public PasswordFieldElement getPasswordField() {
-        return $(PasswordFieldElement.class).id("password");
-    }
-
-    @Override
-    public ButtonElement getSubmitButton() {
-        return $(ButtonElement.class).id("submit");
-    }
-
-    @Override
     public ButtonElement getForgotPasswordButton() {
         return $(ButtonElement.class).id("forgotPasswordButton");
     }
 
-    @Override
-    public void submit() {
-        getSubmitButton().click();
-    }
-
-    @Override
-    public void forgotPassword() {
-        getForgotPasswordButton().click();
-    }
-
-    @Override
     public String getFormTitle() {
         return $(TestBenchElement.class)
                 .attribute("part", "form").first().$("h2").first().getText();
     }
 
-    @Override
+    public TestBenchElement getErrorComponent() {
+        return $(TestBenchElement.class).attribute("part", "error-message").first();
+    }
+
     public String getErrorMessageTitle() {
-        return $(TestBenchElement.class)
-                .attribute("part", "error-message").first().$("h5").first().getText();
+        return getErrorComponent().$("h5").first().getText();
     }
 
-    @Override
     public String getErrorMessage() {
-        return $(TestBenchElement.class)
-                .attribute("part", "error-message").first().$("p").first().getText();
+        return getErrorComponent().$("p").first().getText();
     }
 
-    @Override
     public String getAdditionalInformation() {
         return $(TestBenchElement.class)
                 .attribute("part", "footer").first().$("p").first().getText();

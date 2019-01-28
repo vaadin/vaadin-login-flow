@@ -1,6 +1,6 @@
 package com.vaadin.flow.component.login.test;
 
-import com.vaadin.flow.component.login.testbench.LoginElement;
+import com.vaadin.flow.component.login.testbench.LoginFormElement;
 import com.vaadin.flow.component.notification.testbench.NotificationElement;
 import com.vaadin.testbench.TestBenchElement;
 import com.vaadin.testbench.parallel.BrowserUtil;
@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
 
-public class LoginIT extends BasicIT {
+public class LoginFormIT extends BasicIT {
 
     @Override
     public void init() {
@@ -16,29 +16,29 @@ public class LoginIT extends BasicIT {
     }
 
     @Override
-    public LoginElement getLogin() {
-        return $(LoginElement.class).waitForFirst();
+    public LoginFormElement getLoginForm() {
+        return $(LoginFormElement.class).waitForFirst();
     }
 
     @Test
     public void login() {
-        LoginElement login = getLogin();
+        LoginFormElement login = getLoginForm();
         checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> login.submit());
     }
 
     @Override
     public void testDefaults() {
         super.testDefaults();
-        LoginElement login = getLogin();
+        LoginFormElement login = getLoginForm();
         checkLoginForm(login.getUsernameField(), login.getPasswordField(), login.getSubmitButton());
     }
 
     @Test
     public void forgotPassword() {
-        checkForgotPassword(getLogin());
+        checkForgotPassword(getLoginForm());
     }
 
-    private void checkForgotPassword(LoginElement login) {
+    private void checkForgotPassword(LoginFormElement login) {
         login.forgotPassword();
         String notification = $(NotificationElement.class).waitForFirst().getText();
         Assert.assertEquals("Forgot password button pressed",
@@ -48,7 +48,7 @@ public class LoginIT extends BasicIT {
     @Test
     public void disabledLogin() {
         getDriver().get(getBaseURL() + "/disable-login");
-        LoginElement login = getLogin();
+        LoginFormElement login = getLoginForm();
         login.getUsernameField().setValue("username");
         login.getPasswordField().setValue("password");
         login.submit();
@@ -59,8 +59,7 @@ public class LoginIT extends BasicIT {
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
             skipTest("Skip for Edge due to the sendKeys usage");
         }
-        login.getPasswordField().focus();
-        login.sendKeys(Keys.ENTER);
+        login.getPasswordField().sendKeys(Keys.ENTER);
         Assert.assertFalse("Login notification was shown",
                 $(NotificationElement.class).waitForFirst().isOpen());
 
@@ -74,10 +73,9 @@ public class LoginIT extends BasicIT {
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
             skipTest("Skip for Edge due to the sendKeys usage");
         }
-        LoginElement login = getLogin();
+        LoginFormElement login = getLoginForm();
         checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> {
-            login.getPasswordField().focus();
-            login.sendKeys(Keys.ENTER);
+            login.getPasswordField().sendKeys(Keys.ENTER);
         });
     }
 
@@ -86,19 +84,17 @@ public class LoginIT extends BasicIT {
         if (BrowserUtil.isEdge(getDesiredCapabilities())) {
             skipTest("Skip for Edge due to the sendKeys usage");
         }
-        LoginElement login = getLogin();
+        LoginFormElement login = getLoginForm();
         checkSuccessfulLogin(login.getUsernameField(), login.getPasswordField(), () -> {
-            login.getUsernameField().focus();
-            login.sendKeys(Keys.ENTER);
+            login.getUsernameField().sendKeys(Keys.ENTER);
         });
     }
 
     @Test
     public void failedLogin() {
-        LoginElement login = getLogin();
+        LoginFormElement login = getLoginForm();
 
-        TestBenchElement errorMessage = login.$(TestBenchElement.class)
-                .attribute("part", "error-message").first();
+        TestBenchElement errorMessage = login.getErrorComponent();
         // TODO #isDisplayed() should be used when safari 12 is in use
         Assert.assertTrue(errorMessage.hasAttribute("hidden"));
 
@@ -125,7 +121,7 @@ public class LoginIT extends BasicIT {
     @Test
     public void actionLogin() {
         getDriver().get(getBaseURL() + "/action");
-        LoginElement login = getLogin();
+        LoginFormElement login = getLoginForm();
 
         login.getUsernameField().setValue("username");
         login.getPasswordField().setValue("password");

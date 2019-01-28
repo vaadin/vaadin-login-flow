@@ -2,7 +2,7 @@ package com.vaadin.flow.component.login;
 
 /*
  * #%L
- * Vaadin Login for Vaadin
+ * Vaadin LoginForm for Vaadin
  * %%
  * Copyright (C) 2017 - 2018 Vaadin Ltd
  * %%
