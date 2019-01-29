@@ -2,7 +2,7 @@ package com.vaadin.flow.component.login;
 
 /*
  * #%L
- * Vaadin AbstractLogin for Vaadin
+ * Login for Vaadin Flow
  * %%
  * Copyright (C) 2017 - 2018 Vaadin Ltd
  * %%
@@ -33,7 +33,8 @@ import com.vaadin.flow.internal.JsonSerializer;
 import com.vaadin.flow.shared.Registration;
 
 /**
- * Abstract component for the {@code <vaadin-login>} component.
+ * Abstract component for the {@code <vaadin-login-overlay>} and
+ * {@code <vaadin-login-form>} components.
  * On {@link LoginForm.LoginEvent} component becomes disabled.
  * Disabled component stops to process login events, however
  * the {@link LoginForm.ForgotPasswordEvent} event is processed anyway.

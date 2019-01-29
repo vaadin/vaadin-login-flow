@@ -40,6 +40,9 @@ public class LoginOverlayElement extends TestBenchElement implements Login {
         return $("vaadin-login-overlay-wrapper").onPage().waitForFirst();
     }
 
+    /**
+     * Returns the login form, the actual container of native html form
+     */
     public LoginFormElement getLoginForm() {
         return getLoginOverlayWrapper().$(LoginFormElement.class).first();
     }

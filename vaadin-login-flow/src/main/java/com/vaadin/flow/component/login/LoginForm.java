@@ -2,7 +2,7 @@ package com.vaadin.flow.component.login;
 
 /*
  * #%L
- * Vaadin LoginForm for Vaadin
+ * Login for Vaadin Flow
  * %%
  * Copyright (C) 2017 - 2018 Vaadin Ltd
  * %%
@@ -24,7 +24,7 @@ import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 
 /**
- * Server-side abstract component for the {@code <vaadin-login-form>} component.
+ * Server-side component for the {@code <vaadin-login-form>} component.
  *
  * @author Vaadin Ltd
  */
