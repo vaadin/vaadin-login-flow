@@ -155,7 +155,6 @@ public abstract class AbstractLogin extends Component implements HasEnabled {
 
     /**
      * Adds `login` event listener
-     * Event is fired only if no action is defined
      */
     public Registration addLoginListener(ComponentEventListener<LoginEvent> listener) {
         return ComponentUtil.addListener(this, LoginEvent.class, listener);
@@ -173,7 +172,7 @@ public abstract class AbstractLogin extends Component implements HasEnabled {
 
     /**
      * `login` is fired when the user either clicks Submit button or presses an Enter key.
-     * Event is fired only if no action is set for login form and client-side validation passed.
+     * Event is fired only if client-side validation passed.
      */
     @DomEvent(LOGIN_EVENT)
     public static class LoginEvent extends ComponentEvent<AbstractLogin> {
