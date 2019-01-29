@@ -34,12 +34,12 @@ public class LoginFormElement extends TestBenchElement implements Login {
 
     @Override
     public TextFieldElement getUsernameField() {
-        return $(TextFieldElement.class).id("username");
+        return $(TextFieldElement.class).id("vaadinLoginUsername");
     }
 
     @Override
     public PasswordFieldElement getPasswordField() {
-        return $(PasswordFieldElement.class).id("password");
+        return $(PasswordFieldElement.class).id("vaadinLoginPassword");
     }
 
     @Override
