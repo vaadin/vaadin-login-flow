@@ -95,7 +95,8 @@ public class LoginFormElement extends TestBenchElement implements Login {
 
     @Override
     public boolean isEnabled() {
-        if (getPropertyBoolean("disabled")) {
+        Boolean isDisabled = getPropertyBoolean("disabled");
+        if (isDisabled != null && isDisabled) {
             return false;
         }
         return super.isEnabled();
