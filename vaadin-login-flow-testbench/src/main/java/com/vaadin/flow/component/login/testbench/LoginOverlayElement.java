@@ -151,6 +151,6 @@ public class LoginOverlayElement extends TestBenchElement implements Login {
 
     @Override
     public boolean isEnabled() {
-        return getLogin().isEnabled();
+        return !getPropertyBoolean("disabled");
     }
 }
