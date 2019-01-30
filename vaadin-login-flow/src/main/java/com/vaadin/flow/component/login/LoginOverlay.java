@@ -114,11 +114,13 @@ public class LoginOverlay extends AbstractLogin {
     }
 
     /**
-     * Sets the application title
+     * Sets the application title. Detaches the component title
+     * if it was set earlier.
      *
      * @see #getTitleAsText()
      */
     public void setTitle(String title) {
+        setTitle((Component) null);
         getElement().setProperty("title", title);
     }
 
@@ -137,7 +139,8 @@ public class LoginOverlay extends AbstractLogin {
     }
 
     /**
-     * Sets the application title, <code>null</code> to remove any previously
+     * Sets the application title, <code>null</code> to remove any previous title
+     * and to display title set via {@link #setTitle(String)}
      *
      * @see #getTitle()
      * @param title
