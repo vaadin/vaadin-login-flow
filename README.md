@@ -28,7 +28,7 @@ Add Login to your project
 
 #### Basic use
 ```java
-Component component = new Component();
+LoginForm component = new LoginForm();
 ```
 
 ## Setting up for development
