@@ -11,6 +11,7 @@ import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.demo.DemoView;
 import com.vaadin.flow.router.Route;
@@ -22,6 +23,7 @@ public class LoginView extends DemoView {
     protected void initView() {
         overlay();
         basicDemo();
+        disabledButton();
         internationalization();
         addCard(" ");
         customTitle();
@@ -62,6 +64,26 @@ public class LoginView extends DemoView {
         // end-source-example
 
         addCard("Login Form with internationalization", createLayout(component), updateI18nButton);
+    }
+
+    private void disabledButton() {
+        // begin-source-example
+        // source-example-heading: Disabled button
+        LoginForm component = new LoginForm();
+
+        // The login button is disabled when clicked to prevent multiple submissions.
+        // To restore it, call component.setEnabled(true)
+        Button restoreLogin = new Button("Restore login button",
+            event -> component.setEnabled(true));
+
+        // Setting error to true also enables the login button.
+        Button showError = new Button("Show error",
+            event -> component.setError(true));
+        // end-source-example
+
+        addCard("Disabled button", createLayout(component),
+            new HorizontalLayout(restoreLogin, showError));
+
     }
 
     private void overlay() {
