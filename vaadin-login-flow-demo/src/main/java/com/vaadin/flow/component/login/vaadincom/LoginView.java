@@ -4,6 +4,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.login.AbstractLogin;
@@ -68,7 +69,7 @@ public class LoginView extends DemoView {
 
     private void disabledButton() {
         // begin-source-example
-        // source-example-heading: Disabled button
+        // source-example-heading: Re-enabling login button after submission
         LoginForm component = new LoginForm();
 
         // The login button is disabled when clicked to prevent multiple submissions.
@@ -80,8 +81,11 @@ public class LoginView extends DemoView {
         Button showError = new Button("Show error",
             event -> component.setError(true));
         // end-source-example
-
-        addCard("Disabled button", createLayout(component),
+        final String message =
+            "The login button is disabled when clicked to prevent multiple submissions."
+                + " To restore it, call component.setEnabled(true)";
+        addCard("Re-enabling login button after submission", new Span(message),
+            createLayout(component),
             new HorizontalLayout(restoreLogin, showError));
 
     }
