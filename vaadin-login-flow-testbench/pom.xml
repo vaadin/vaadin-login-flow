@@ -26,6 +26,11 @@
             <artifactId>vaadin-text-field-testbench</artifactId>
             <version>2.0.0.rc1</version>
         </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-button-testbench</artifactId>
+            <version>2.0.0.rc1</version>
+        </dependency>
     </dependencies>
 
     <build>
