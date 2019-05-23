@@ -8,6 +8,7 @@ script: mvn -B verify -Dvaadin.productionMode -Dcom.vaadin.testbench.Parameters.
 branches:
   only:
     - master
+    - 1.0
 
 cache:
   directories:
