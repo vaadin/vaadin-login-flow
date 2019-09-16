@@ -1,5 +1,5 @@
 language: java
-jdk: oraclejdk8
+jdk: openjdk8
 dist: xenial
 
 script: mvn -B clean verify -Dvaadin.productionMode -Dcom.vaadin.testbench.Parameters.testsInParallel=2 -Dvaadin.proKey=$VAADIN_PRO_KEY -Dsauce.user=$SAUCE_USER -Dsauce.sauceAccessKey=$SAUCE_ACCESSKEY -P$IT_PROFILE
