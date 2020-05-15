@@ -28,8 +28,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- For testbench component -->
-        <button.version>2.0-SNAPSHOT</button.version>
-        <textfield.version>2.0-SNAPSHOT</textfield.version>
+        <button.version>2.1-SNAPSHOT</button.version>
+        <textfield.version>2.2-SNAPSHOT</textfield.version>
     </properties>
 
     <modules>
@@ -47,6 +47,15 @@
             </snapshots>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>vaadin-prereleases</id>
+            <url>https://maven.vaadin.com/vaadin-prereleases</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <profiles>
         <profile>
