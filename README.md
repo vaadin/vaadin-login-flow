@@ -1,3 +1,8 @@
+⚠️ **This repository is deprecated**
+- Sources for this flow component can be found at https://github.com/vaadin/vaadin-flow-component
+- Tickets has been moved to the web component repository https://github.com/vaadin/vaadin-login/issues
+
+
 # Vaadin Login for Flow
 
 Vaadin Login for Flow is a UI component add-on for Vaadin.
